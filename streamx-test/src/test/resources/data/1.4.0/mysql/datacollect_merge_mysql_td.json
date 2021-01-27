@@ -1,0 +1,225 @@
+{
+  "params": {
+    "batchDuration": "10"
+  },
+  "plugins": [
+  ],
+  "configs": [
+    {
+      "reader": {
+        "name": "cn.tongdun.streamx.kafka.reader.KafkaReader",
+        "brokerList": "10.57.34.20:9092",
+        "topic": "baldur-gantry-original",
+        "groupId": "20200707_1",
+        "extraConfigs": "",
+        "parser": "canal"
+      },
+      "writers": [
+        {
+          "name": "cn.tongdun.streamx.mysql.writer.MysqlWriter",
+          "url": "jdbc:mysql://10.57.22.115:3306/test?useSSL=false",
+          "user": "root",
+          "password": "TD@123",
+          "table": "dfs_gantry_monitor_status"
+        }
+      ],
+      "transformer": {
+        "where": "type<>'DELETE' and table='dfs_gantry_monitor_status'",
+        "sort": {
+          "partitionKey": "database,table",
+          "primaryKey": "RunStateId,ComputerOrder",
+          "sortKey": ""
+        },
+        "reader_fields": {
+          "database": {
+            "type": "string"
+          },
+          "table": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "FrontSysFlag": {
+            "type": "int"
+          },
+          "RunStateId": {
+            "type": "string"
+          },
+          "GantryId": {
+            "type": "string"
+          },
+          "StateVersion": {
+            "type": "string"
+          },
+          "StateTime": {
+            "type": "string"
+          },
+          "ComputerOrder": {
+            "type": "int"
+          },
+          "FrontRateVersion": {
+            "type": "string"
+          },
+          "FrontParamVersion": {
+            "type": "string"
+          },
+          "FrontSysVersion": {
+            "type": "string"
+          },
+          "FrontSoftVersion": {
+            "type": "string"
+          },
+          "FrontSoftState": {
+            "type": "string"
+          },
+          "FrontOverTradeCount": {
+            "type": "int"
+          },
+          "FrontTransErrTradeCount": {
+            "type": "int"
+          },
+          "FrontOverVehDataCount": {
+            "type": "int"
+          },
+          "FrontTransErrVehDataCount": {
+            "type": "int"
+          },
+          "FrontOverVehPicCount": {
+            "type": "int"
+          },
+          "FrontTransErrVehPicCount": {
+            "type": "string"
+          },
+          "FrontLoadAverage": {
+            "type": "string"
+          },
+          "FrontDiskDataTotalSize": {
+            "type": "string"
+          },
+          "FrontDiskDataLeftSize": {
+            "type": "string"
+          },
+          "FrontDiskRunTotalSize": {
+            "type": "string"
+          },
+          "FrontDiskRunLeftSize": {
+            "type": "string"
+          },
+          "FrontCPURate": {
+            "type": "string"
+          },
+          "FrontMemoryRate": {
+            "type": "string"
+          },
+          "FrontBeidouState": {
+            "type": "int"
+          },
+          "BackDBVersion": {
+            "type": "string"
+          },
+          "FrontErrorDataTotal": {
+            "type": "string"
+          },
+          "FrontErrorEventTotal": {
+            "type": "string"
+          },
+          "WeatherDetectorState": {
+            "type": "string"
+          },
+          "WeatherDetectorVersion": {
+            "type": "string"
+          },
+          "ClassDetectorState": {
+            "type": "string"
+          },
+          "ClassDetectorVersion": {
+            "type": "string"
+          },
+          "LoadDetectorState": {
+            "type": "string"
+          },
+          "LoadDetectorVersion": {
+            "type": "string"
+          },
+          "VehicleCount": {
+            "type": "string"
+          },
+          "RecvTime": {
+            "type": "string"
+          },
+          "UploadFlag": {
+            "type": "int"
+          },
+          "UploadTime": {
+            "type": "string"
+          },
+          "LnduceFlag": {
+            "type": "int"
+          },
+          "LnduceTime": {
+            "type": "string"
+          },
+          "TempControllerStatus": {
+            "type": "string"
+          },
+          "PowerControllerStatus": {
+            "type": "string"
+          },
+          "MUploadFlag": {
+            "type": "int"
+          },
+          "MUploadTime": {
+            "type": "string"
+          }
+        },
+        "writer_fields": [
+          "FrontSysFlag",
+          "RunStateId",
+          "GantryId",
+          "StateVersion",
+          "StateTime",
+          "ComputerOrder",
+          "FrontRateVersion",
+          "FrontParamVersion",
+          "FrontSysVersion",
+          "FrontSoftVersion",
+          "FrontSoftState",
+          "FrontOverTradeCount",
+          "FrontTransErrTradeCount",
+          "FrontOverVehDataCount",
+          "FrontTransErrVehDataCount",
+          "FrontOverVehPicCount",
+          "FrontTransErrVehPicCount",
+          "FrontLoadAverage",
+          "FrontDiskDataTotalSize",
+          "FrontDiskDataLeftSize",
+          "FrontDiskRunTotalSize",
+          "FrontDiskRunLeftSize",
+          "FrontCPURate",
+          "FrontMemoryRate",
+          "FrontBeidouState",
+          "BackDBVersion",
+          "FrontErrorDataTotal",
+          "FrontErrorEventTotal",
+          "WeatherDetectorState",
+          "WeatherDetectorVersion",
+          "ClassDetectorState",
+          "ClassDetectorVersion",
+          "LoadDetectorState",
+          "LoadDetectorVersion",
+          "VehicleCount",
+          "RecvTime",
+          "UploadFlag",
+          "UploadTime",
+          "LnduceFlag",
+          "LnduceTime",
+          "TempControllerStatus",
+          "PowerControllerStatus",
+          "MUploadFlag",
+          "MUploadTime"
+        ]
+      }
+    }
+  ]
+}

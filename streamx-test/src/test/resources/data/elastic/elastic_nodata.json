@@ -1,0 +1,86 @@
+{
+  "params": {
+    "batchDuration": "30"
+  },
+  "configs": [
+    {
+      "reader": {
+        "name": "",
+        "brokerList": "33.69.6.13:9092,33.69.6.14:9092,33.69.6.15:9092,33.69.6.16:9092,33.69.6.17:9092,33.69.6.18:9092,33.69.6.19:9092,33.69.6.20:9092,33.69.6.21:9092,33.69.6.22:9092",
+        "topic": "gaoxing_dba_algorithm_collection",
+        "groupId": "dba_count_stat_daily_mt_20200602",
+        "extraConfigs": "",
+        "parser": "json"
+      },
+      "writers": [
+        {
+          "name": "cn.tongdun.streamx.elastic.writer.ElasticWriter",
+          "url": "http://33.69.6.95:9221,http://33.69.6.96:9221,http://33.69.6.97:9221,http://33.69.6.98:9221",
+          "index": "dba_count_stat_daily",
+          "partitionValue": "",
+          "type": "base",
+          "batchSize": 1000,
+          "hasId": false
+        }
+      ],
+      "transformer": {
+        "where": "table='dba_count_stat_daily_mt'",
+        "reader_fields": {
+          "table": {
+            "type": "string"
+          },
+          "record.type": {
+            "type": "int"
+          },
+          "record.name": {
+            "type": "string"
+          },
+          "record.osd": {
+            "type": "int"
+          },
+          "record.ild": {
+            "type": "int"
+          },
+          "record.wob": {
+            "type": "int"
+          },
+          "record.crlc": {
+            "type": "int"
+          },
+          "record.wc": {
+            "type": "int"
+          },
+          "record.ltls": {
+            "type": "int"
+          },
+          "record.adt": {
+            "type": "int"
+          },
+          "record.total": {
+            "type": "int"
+          },
+          "record.stat_time": {
+            "type": "string"
+          },
+          "record.ds": {
+            "type": "string"
+          }
+        },
+        "writer_fields": [
+          "record_type",
+          "record_name",
+          "record_osd",
+          "record_ild",
+          "record_wob",
+          "record_crlc",
+          "record_wc",
+          "record_ltls",
+          "record_adt",
+          "record_total",
+          "record_stat_time",
+          "record_ds"
+        ]
+      }
+    }
+  ]
+}

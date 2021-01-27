@@ -1,0 +1,61 @@
+{
+  "params": {
+    "batchDuration": "30"
+  },
+  "configs": [
+    {
+      "reader": {
+        "parser": "json",
+        "groupId": "asdy111zxc",
+        "extraConfigs": "auto.offset.reset:earliest",
+        "name": "cn.tongdun.streamx.kafka.reader.KafkaReader",
+        "topic": "23test",
+        "brokerList": "10.57.34.20:9092"
+      },
+      "writers": [
+        {
+          "password": "abc123",
+          "database": 4,
+          "expireTime": 3600,
+          "port": 6379,
+          "prefix": "streamx_",
+          "name": "cn.tongdun.streamx.redis.writer.RedisWriter",
+          "host": "10.57.22.115",
+          "batchSize": 1000,
+          "operation": "set"
+        }
+      ],
+      "transformer": {
+        "where": "",
+        "reader_fields": {
+          "id": {
+            "type": "varchar"
+          },
+          "latitude": {
+            "type": "varchar"
+          },
+          "longitude": {
+            "type": "varchar"
+          },
+          "sendTime": {
+            "type": "varchar"
+          },
+          "time": {
+            "type": "varchar"
+          },
+          "userId": {
+            "type": "varchar"
+          }
+        },
+        "writer_fields": [
+          "id as id",
+          "latitude as latitude",
+          "longitude as longitude",
+          "sendTime as sendTime",
+          "time as time",
+          "userId as userId"
+        ]
+      }
+    }
+  ]
+}

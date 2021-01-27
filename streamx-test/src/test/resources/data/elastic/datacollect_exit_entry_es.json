@@ -1,0 +1,688 @@
+{
+  "params": {
+    "batchDuration": "10"
+  },
+  "configs": [
+    {
+      "reader": {
+        "name": "",
+        "brokerList": "33.69.6.13:9092,33.69.6.14:9092,33.69.6.15:9092,33.69.6.16:9092,33.69.6.17:9092,33.69.6.18:9092,33.69.6.19:9092,33.69.6.20:9092,33.69.6.21:9092,33.69.6.22:9092",
+        "topic": "baldur-fee-exit-entry",
+        "groupId": "baldur-fee-exit-entry_exit-0126-7",
+        "extraConfigs": "auto.offset.reset:latest",
+        "parser": "json"
+      },
+      "writers": [
+        {
+          "name": "cn.tongdun.streamx.elastic.writer.ElasticWriter",
+          "url": "33.69.6.95:9221,33.69.6.96:9221,33.69.6.97:9221,33.69.6.98:9221",
+          "index": "exit_jour_result_test_dt_{0}",
+          "partitionValue": "nExMonth",
+          "type": "exit_jour_result_dt",
+          "batchSize": 1000,
+          "hasId": true
+        }
+      ],
+      "transformer": {
+        "where": "tbName='exit_jour'",
+        "reader_fields": {
+          "tbName": {
+            "type": "string"
+          },
+          "data.n_en_date": {
+            "type": "string"
+          },
+          "data.n_en_time": {
+            "type": "string"
+          },
+          "data.c_en_shift_code": {
+            "type": "string"
+          },
+          "data.n_en_station_id": {
+            "type": "string"
+          },
+          "data.n_en_card_id": {
+            "type": "string"
+          },
+          "data.c_en_vehicle_class": {
+            "type": "string"
+          },
+          "data.n_ex_date": {
+            "type": "string"
+          },
+          "data.n_ex_time": {
+            "type": "string"
+          },
+          "data.c_ex_shift_code": {
+            "type": "string"
+          },
+          "data.n_ex_op_code": {
+            "type": "string"
+          },
+          "data.c_ex_vehicle_class": {
+            "type": "string"
+          },
+          "data.c_ex_vehicle_type": {
+            "type": "string"
+          },
+          "data.c_ex_card_status": {
+            "type": "string"
+          },
+          "data.c_other_type": {
+            "type": "string"
+          },
+          "data.n_other_id": {
+            "type": "string"
+          },
+          "data.vc_marks": {
+            "type": "string"
+          },
+          "data.d_toll": {
+            "type": "string"
+          },
+          "data.d_unpaid": {
+            "type": "string"
+          },
+          "data.d_forfeit": {
+            "type": "string"
+          },
+          "data.d_agency_toll": {
+            "type": "string"
+          },
+          "data.vc_agencys": {
+            "type": "string"
+          },
+          "data.c_category": {
+            "type": "string"
+          },
+          "data.c_pay_way": {
+            "type": "string"
+          },
+          "data.n_bill_no": {
+            "type": "string"
+          },
+          "data.d_svc_balance": {
+            "type": "string"
+          },
+          "data.n_prn_times": {
+            "type": "string"
+          },
+          "data.n_box_id": {
+            "type": "string"
+          },
+          "data.n_zone_time": {
+            "type": "string"
+          },
+          "data.n_card_lane_id": {
+            "type": "string"
+          },
+          "data.n_card_serial_no": {
+            "type": "string"
+          },
+          "data.n_card_op_code": {
+            "type": "string"
+          },
+          "data.c_card_license": {
+            "type": "string"
+          },
+          "data.c_ex_license": {
+            "type": "string"
+          },
+          "data.d_card_toll": {
+            "type": "string"
+          },
+          "data.d_card_agency_toll": {
+            "type": "string"
+          },
+          "data.c_part_vehicle_type": {
+            "type": "string"
+          },
+          "data.c_special_type": {
+            "type": "string"
+          },
+          "data.vc_card_agencys": {
+            "type": "string"
+          },
+          "data.d_card_forfeit": {
+            "type": "string"
+          },
+          "data.n_temp": {
+            "type": "string"
+          },
+          "data.c_temp": {
+            "type": "string"
+          },
+          "data.c_cardno": {
+            "type": "string"
+          },
+          "data.c_bankexamno": {
+            "type": "string"
+          },
+          "data.c_posserialno": {
+            "type": "string"
+          },
+          "data.d_weight": {
+            "type": "string"
+          },
+          "data.d_over_weight": {
+            "type": "string"
+          },
+          "data.c_ticket_type": {
+            "type": "string"
+          },
+          "data.c_verifycode": {
+            "type": "string"
+          },
+          "data.n_ex_psam_id": {
+            "type": "string"
+          },
+          "data.n_en_psam_id": {
+            "type": "string"
+          },
+          "data.c_lane_type": {
+            "type": "string"
+          },
+          "data.c_cacu_way": {
+            "type": "string"
+          },
+          "data.vc_tac": {
+            "type": "string"
+          },
+          "data.vc_issue_code": {
+            "type": "string"
+          },
+          "data.d_fee_length": {
+            "type": "string"
+          },
+          "data.d_fare0": {
+            "type": "string"
+          },
+          "data.d_fare1": {
+            "type": "string"
+          },
+          "data.d_fare2": {
+            "type": "string"
+          },
+          "data.vc_fix_marks": {
+            "type": "string"
+          },
+          "data.vc_fix_marks_status": {
+            "type": "string"
+          },
+          "data.n_ex_cpu_psamid": {
+            "type": "string"
+          },
+          "data.n_vehicle_seats": {
+            "type": "string"
+          },
+          "data.n_trade_time": {
+            "type": "string"
+          },
+          "data.n_trade_speed": {
+            "type": "string"
+          },
+          "data.n_batch_no": {
+            "type": "string"
+          },
+          "data.n_temp1": {
+            "type": "string"
+          },
+          "data.c_temp1": {
+            "type": "string"
+          },
+          "data.n_temp2": {
+            "type": "string"
+          },
+          "data.c_temp2": {
+            "type": "string"
+          },
+          "data.c_make_ticket": {
+            "type": "string"
+          },
+          "data.n_en_sys_date": {
+            "type": "string"
+          },
+          "data.n_favouredpolicy_type": {
+            "type": "string"
+          },
+          "data.n_mb_trade_date": {
+            "type": "string"
+          },
+          "data.n_mb_trade_time": {
+            "type": "string"
+          },
+          "data.vc_temp3": {
+            "type": "string"
+          },
+          "data.vc_iden_license": {
+            "type": "string"
+          },
+          "data.n_marks_mode": {
+            "type": "string"
+          },
+          "data.d_bef_balance": {
+            "type": "string"
+          },
+          "data.c_en_lane_type": {
+            "type": "string"
+          },
+          "data.c_en_category": {
+            "type": "string"
+          },
+          "data.n_station": {
+            "type": "string"
+          },
+          "data.n_ex_serial_no": {
+            "type": "string"
+          },
+          "data.n_ex_lane_id": {
+            "type": "string"
+          },
+          "data.c_send_flag2": {
+            "type": "string"
+          },
+          "data.c_send_flag3": {
+            "type": "string"
+          },
+          "data.c_send_flag1": {
+            "type": "string"
+          },
+          "data.vc_marks1": {
+            "type": "string"
+          },
+          "data.n_axis": {
+            "type": "string"
+          },
+          "data.hhy_dt": {
+            "type": "string"
+          },
+          "data.c_send_flag4": {
+            "type": "string"
+          },
+          "data.vc_axle_specialtype": {
+            "type": "string"
+          },
+          "data.n_exaxlecount": {
+            "type": "string"
+          },
+          "data.vc_cardver": {
+            "type": "string"
+          },
+          "data.n_algorithmidentifier": {
+            "type": "string"
+          },
+          "data.vc_stationhex": {
+            "type": "string"
+          },
+          "data.vc_exhex": {
+            "type": "string"
+          },
+          "data.vc_enhex": {
+            "type": "string"
+          },
+          "data.d_enweight": {
+            "type": "string"
+          },
+          "data.n_enaxlecount": {
+            "type": "string"
+          },
+          "data.vc_enaxletype": {
+            "type": "string"
+          },
+          "data.d_enpermittedweight": {
+            "type": "string"
+          },
+          "data.n_enspecialtruck": {
+            "type": "string"
+          },
+          "data.vc_markhex": {
+            "type": "string"
+          },
+          "data.d_originaltotalfee": {
+            "type": "string"
+          },
+          "data.d_originalpassfare": {
+            "type": "string"
+          },
+          "data.d_originalagencyfare": {
+            "type": "string"
+          },
+          "data.d_originalfare0": {
+            "type": "string"
+          },
+          "data.d_originalfare1": {
+            "type": "string"
+          },
+          "data.d_originalfare2": {
+            "type": "string"
+          },
+          "data.vc_rateversion": {
+            "type": "string"
+          },
+          "data.vc_obumac": {
+            "type": "string"
+          },
+          "data.vc_obusn": {
+            "type": "string"
+          },
+          "data.n_electricalpercent": {
+            "type": "string"
+          },
+          "data.n_multiprovince": {
+            "type": "string"
+          },
+          "data.vc_pass_id": {
+            "type": "string"
+          },
+          "data.vc_obu_id": {
+            "type": "string"
+          },
+          "data.vc_ex_lane_hex": {
+            "type": "string"
+          },
+          "data.vc_en_lane_hex": {
+            "type": "string"
+          },
+          "data.n_toll_support": {
+            "type": "int"
+          },
+          "data.n_obu_sign": {
+            "type": "int"
+          },
+          "data.n_en_vehicle_usertype": {
+            "type": "string"
+          },
+          "data.n_ex_vehicle_usertype": {
+            "type": "string"
+          },
+          "data.n_direction": {
+            "type": "int"
+          },
+          "data.vc_vehicle_Sign_Id": {
+            "type": "string"
+          },
+          "data.d_trans_Fee": {
+            "type": "double"
+          },
+          "data.N_sign_Status": {
+            "type": "int"
+          },
+          "data.vc_trade_id": {
+            "type": "string"
+          },
+          "data.ts_timestamp": {
+            "type": "bigint"
+          },
+          "data.n_vehicle_sign": {
+            "type": "int"
+          },
+          "data.n_vehicle_class_gb": {
+            "type": "int"
+          },
+          "data.vc_cert_no": {
+            "type": "string"
+          },
+          "data.vc_special_type_gb": {
+            "type": "string"
+          },
+          "data.n_gantry_lines": {
+            "type": "int"
+          },
+          "data.n_detail_lines": {
+            "type": "int"
+          },
+          "data.d_zj_fee": {
+            "type": "double"
+          },
+          "data.n_obu_count_local": {
+            "type": "int"
+          },
+          "data.n_obu_count_total": {
+            "type": "int"
+          },
+          "data.n_obu_count_nocard": {
+            "type": "int"
+          },
+          "data.n_obu_count_provs": {
+            "type": "int"
+          },
+          "data.vc_obu_en_station": {
+            "type": "string"
+          },
+          "data.n_obu_distance": {
+            "type": "bigint"
+          },
+          "data.d_prov_pay_fee": {
+            "type": "double"
+          },
+          "data.d_prov_fee": {
+            "type": "double"
+          },
+          "data.d_cpu_fee_total": {
+            "type": "double"
+          },
+          "data.vc_obu_ef04_rec": {
+            "type": "string"
+          },
+          "data.vc_prov_ids": {
+            "type": "string"
+          },
+          "data.vc_prov_fees": {
+            "type": "string"
+          },
+          "data.vc_prov_od": {
+            "type": "string"
+          },
+          "data.vc_short_fare_ver": {
+            "type": "string"
+          },
+          "data.d_short_fee_total": {
+            "type": "double"
+          },
+          "data.n_agency_gantry_num": {
+            "type": "int"
+          },
+          "data.d_agency_gantry_fee": {
+            "type": "double"
+          },
+          "data.n_display_amount_type": {
+            "type": "int"
+          },
+          "data.n_trans_Pay_Type": {
+            "type": "int"
+          },
+          "data.d_short_Fee_Mileage": {
+            "type": "double"
+          },
+          "data.d_fee_Rate": {
+            "type": "double"
+          },
+          "data.n_exit_Fee_Type": {
+            "type": "int"
+          },
+          "data.d_total_pay_fee": {
+            "type": "double"
+          },
+          "data.d_total_fee": {
+            "type": "double"
+          },
+          "data.n_trade_mode": {
+            "type": "int"
+          },
+          "data.vc_appoint": {
+            "type": "string"
+          },
+          "data.d_prov_pass_fee": {
+            "type": "double"
+          }
+        },
+        "writer_fields": [
+          "concat(data_n_en_date,'-',data_n_ex_lane_id,'-',data_n_ex_serial_no) as nEnDate",
+          "data_n_en_date as nEnDate",
+          "data_n_en_time as nEnTime",
+          "data_c_en_shift_code as cEnShiftCode",
+          "data_n_en_station_id as nEnStationId",
+          "data_n_en_card_id as nEnCardId",
+          "data_c_en_vehicle_class as cEnVehicleClass",
+          "data_n_ex_date as nExDate",
+          "data_n_ex_time as nExTime",
+          "data_c_ex_shift_code as cExShiftCode",
+          "data_n_ex_op_code as nExOpCode",
+          "data_c_ex_vehicle_class as cExVehicleClass",
+          "data_c_ex_vehicle_type as cExVehicleType",
+          "data_c_ex_card_status as cExCardStatus",
+          "data_c_other_type as cOtherType",
+          "data_n_other_id as nOtherId",
+          "data_vc_marks as vcMarks",
+          "data_d_toll as dToll",
+          "data_d_unpaid as dUnpaid",
+          "data_d_forfeit as dForfeit",
+          "data_d_agency_toll as dAgencyToll",
+          "data_vc_agencys as vcAgencys",
+          "data_c_category as cCategory",
+          "data_c_pay_way as cPayWay",
+          "data_n_bill_no as nBillNo",
+          "data_d_svc_balance as dSvcBalance",
+          "data_n_prn_times as nPrnTimes",
+          "data_n_box_id as nBoxId",
+          "data_n_zone_time as nZoneTime",
+          "data_n_card_lane_id as nCardLaneId",
+          "data_n_card_serial_no as nCardSerialNo",
+          "data_n_card_op_code as nCardOpCode",
+          "data_c_card_license as cCardLicense",
+          "data_c_ex_license as cExLicense",
+          "data_d_card_toll as dCardToll",
+          "data_d_card_agency_toll as dCardAgencyToll",
+          "data_c_part_vehicle_type as cPartVehicleType",
+          "data_c_special_type as cSpecialType",
+          "data_vc_card_agencys as vcCardAgencys",
+          "data_d_card_forfeit as dCardForfeit",
+          "data_n_temp as nTemp",
+          "data_c_temp as cTemp",
+          "data_c_cardno as cCardno",
+          "data_c_bankexamno as cBankexamno",
+          "data_c_posserialno as cPosserialno",
+          "data_d_weight as dWeight",
+          "data_d_over_weight as dOverWeight",
+          "data_c_ticket_type as cTicketType",
+          "data_c_verifycode as cVerifycode",
+          "data_n_ex_psam_id as nExPsamId",
+          "data_n_en_psam_id as nEnPsamId",
+          "data_c_lane_type as cLaneType",
+          "data_c_cacu_way as cCacuWay",
+          "data_vc_tac as vcTac",
+          "data_vc_issue_code as vcIssueCode",
+          "data_d_fee_length as dFeeLength",
+          "data_d_fare0 as dFare0",
+          "data_d_fare1 as dFare1",
+          "data_d_fare2 as dFare2",
+          "data_vc_fix_marks as vcFixMarks",
+          "data_vc_fix_marks_status as vcFixMarksStatus",
+          "data_n_ex_cpu_psamid as nExCpuPsamid",
+          "data_n_vehicle_seats as nVehicleSeats",
+          "data_n_trade_time as nTradeTime",
+          "data_n_trade_speed as nTradeSpeed",
+          "data_n_batch_no as nBatchNo",
+          "data_n_temp1 as nTemp1",
+          "data_c_temp1 as cTemp1",
+          "data_n_temp2 as nTemp2",
+          "data_c_temp2 as cTemp2",
+          "data_c_make_ticket as cMakeTicket",
+          "data_n_en_sys_date as nEnSysDate",
+          "data_n_favouredpolicy_type as nFavouredpolicyType",
+          "data_n_mb_trade_date as nMbTradeDate",
+          "data_n_mb_trade_time as nMbTradeTime",
+          "data_vc_temp3 as vcTemp3",
+          "data_vc_iden_license as vcIdenLicense",
+          "data_n_marks_mode as nMarksMode",
+          "data_d_bef_balance as dBefBalance",
+          "data_c_en_lane_type as cEnLaneType",
+          "data_c_en_category as cEnCategory",
+          "data_n_station as nStation",
+          "data_n_ex_serial_no as nExSerialNo",
+          "data_n_ex_lane_id as nExLaneId",
+          "data_c_send_flag2 as cSendFlag2",
+          "data_c_send_flag3 as cSendFlag3",
+          "data_c_send_flag1 as cSendFlag1",
+          "data_vc_marks1 as vcMarks1",
+          "data_n_axis as nAxis",
+          "data_hhy_dt as hhyDt",
+          "data_c_send_flag4 as cSendFlag4",
+          "data_vc_axle_specialtype as vcAxleSpecialtype",
+          "data_n_exaxlecount as nExaxlecount",
+          "data_vc_cardver as vcCardver",
+          "data_n_algorithmidentifier as nAlgorithmidentifier",
+          "data_vc_stationhex as vcStationhex",
+          "data_vc_exhex as vcExhex",
+          "data_vc_enhex as vcEnhex",
+          "data_d_enweight as dEnweight",
+          "data_n_enaxlecount as nEnaxlecount",
+          "data_vc_enaxletype as vcEnaxletype",
+          "data_d_enpermittedweight as dEnpermittedweight",
+          "data_n_enspecialtruck as nEnspecialtruck",
+          "data_vc_markhex as vcMarkhex",
+          "data_d_originaltotalfee as dOriginaltotalfee",
+          "data_d_originalpassfare as dOriginalpassfare",
+          "data_d_originalagencyfare as dOriginalagencyfare",
+          "data_d_originalfare0 as dOriginalfare0",
+          "data_d_originalfare1 as dOriginalfare1",
+          "data_d_originalfare2 as dOriginalfare2",
+          "data_vc_rateversion as vcRateversion",
+          "data_vc_obumac as vcObumac",
+          "data_vc_obusn as vcObusn",
+          "data_n_electricalpercent as nElectricalpercent",
+          "data_n_multiprovince as nMultiprovince",
+          "data_vc_pass_id as vcPassId",
+          "data_vc_obu_id as vcObuId",
+          "data_vc_ex_lane_hex as vcExLaneHex",
+          "data_vc_en_lane_hex as vcEnLaneHex",
+          "data_n_toll_support as nTollSupport",
+          "data_n_obu_sign as nObuSign",
+          "data_n_en_vehicle_usertype as nEnVehicleUsertype",
+          "data_n_ex_vehicle_usertype as nExVehicleUsertype",
+          "data_n_direction as nDirection",
+          "data_vc_vehicle_Sign_Id as vcVehicleSignId",
+          "data_d_trans_Fee as dTransFee",
+          "data_N_sign_Status as nSignStatus",
+          "data_vc_trade_id as vcTradeId",
+          "data_ts_timestamp as tsTimestamp",
+          "data_n_vehicle_sign as nVehicleSign",
+          "data_n_vehicle_class_gb as nVehicleClassGb",
+          "data_vc_cert_no as vcCertNo",
+          "data_vc_special_type_gb as vcSpecialTypeGb",
+          "data_n_gantry_lines as nGantryLines",
+          "data_n_detail_lines as nDetailLines",
+          "data_d_zj_fee as dZjFee",
+          "data_n_obu_count_local as nObuCountLocal",
+          "data_n_obu_count_total as nObuCountTotal",
+          "data_n_obu_count_nocard as nObuCountNocard",
+          "data_n_obu_count_provs as nObuCountProvs",
+          "data_vc_obu_en_station as vcObuEnStation",
+          "data_n_obu_distance as nObuDistance",
+          "data_d_prov_pay_fee as dProvPayFee",
+          "data_d_prov_fee as dProvFee",
+          "data_d_cpu_fee_total as dCpuFeeTotal",
+          "data_vc_obu_ef04_rec as vcObuEf04Rec",
+          "data_vc_prov_ids as vcProvIds",
+          "data_vc_prov_fees as vcProvFees",
+          "data_vc_prov_od as vcProvOd",
+          "data_vc_short_fare_ver as vcShortFareVer",
+          "data_d_short_fee_total as dShortFeeTotal",
+          "data_n_agency_gantry_num as nAgencyGantryNum",
+          "data_d_agency_gantry_fee as dAgencyGantryFee",
+          "data_n_display_amount_type as nDisplayAmountType",
+          "data_n_trans_Pay_Type as nTransPayType",
+          "data_d_short_Fee_Mileage as dShortFeeMileage",
+          "data_d_fee_Rate as dFeeRate",
+          "data_n_exit_Fee_Type as nExitFeeType",
+          "data_d_total_pay_fee as dTotalPayFee",
+          "data_d_total_fee as dTotalFee",
+          "data_n_trade_mode as nTradeMode",
+          "data_vc_appoint as vcAppoint",
+          "data_d_prov_pass_fee as dProvPassFee",
+          "concat(substr(data_n_ex_date,1,4),substr(data_n_ex_date,5,2)) as nExMonth"
+        ]
+      }
+    }
+  ]
+}

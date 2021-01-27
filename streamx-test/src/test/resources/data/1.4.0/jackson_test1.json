@@ -1,0 +1,88 @@
+{
+  "params": {
+    "batchDuration": "10",
+    "failDir": "/user/backup/app1"
+  },
+  "plugins": [
+    {
+      "name": "cn.tongdun.streamx.addon.failover.FailoverPlugin",
+      "sleepSec": "180"
+    }
+  ],
+  "configs": [
+    {
+      "reader": {
+        "name": "",
+        "brokerList": "33.69.6.13:9092,33.69.6.14:9092,33.69.6.15:9092,33.69.6.16:9092,33.69.6.17:9092,33.69.6.18:9092,33.69.6.19:9092,33.69.6.20:9092,33.69.6.21:9092,33.69.6.22:9092",
+        "topic": "test_zhy2",
+        "groupId": "20200525_1",
+        "extraConfigs": "",
+        "parser": "json"
+      },
+      "writers": [
+        {
+          "name": "cn.tongdun.streamx.elastic.writer.ElasticWriter",
+          "url": "http://33.69.6.98:9221",
+          "index": "zhy_test_job1_4",
+          "partitionValue": "",
+          "type": "job4",
+          "batchSize": 200,
+          "hasId": false
+        },
+        {
+          "name": "cn.tongdun.streamx.hive.writer.HiveWriter",
+          "tableName": "hhy_dw.test_zhy1_tab_dt",
+          "partitionValue": "ds",
+          "hiveSetConfigs": ""
+        }
+      ],
+      "transformer": {
+        "where": "",
+        "reader_fields": {
+          "type": {
+            "type": "string"
+          },
+          "backTestTaskId": {
+            "type": "string"
+          },
+          "msg.activity_e_dt_vs_invoketype": {
+            "type": "string"
+          },
+          "msg.activity_d_t_vb_eventoccurtime": {
+            "type": "long"
+          },
+          "msg.browser.sequenceId": {
+            "type": "string"
+          },
+          "msg.a.b.c": {
+            "type": "string"
+          },
+          "msg.geo": {
+            "type": "string"
+          },
+          "msg.device": {
+            "type": "string"
+          },
+          "msg.device.1": {
+            "type": "boolean"
+          },
+          "msg.device.2": {
+            "type": "int"
+          },
+          "msg.device.3": {
+            "type": "long"
+          },
+          "msg.device.4": {
+            "type": "float"
+          },
+          "msg.device.5": {
+            "type": "double"
+          }
+        },
+        "writer_fields": [
+          "*"
+        ]
+      }
+    }
+  ]
+}

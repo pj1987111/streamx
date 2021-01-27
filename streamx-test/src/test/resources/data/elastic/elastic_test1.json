@@ -1,0 +1,98 @@
+{
+  "params": {
+    "batchDuration": "10"
+  },
+  "configs": [
+    {
+      "reader": {
+        "name": "",
+        "brokerList": "33.69.6.13:9092,33.69.6.14:9092,33.69.6.15:9092,33.69.6.16:9092,33.69.6.17:9092,33.69.6.18:9092,33.69.6.19:9092,33.69.6.20:9092,33.69.6.21:9092,33.69.6.22:9092",
+        "topic": "test_zhy",
+        "groupId": "es_test4",
+        "extraConfigs": "",
+        "parser": "json"
+      },
+      "writer": {
+        "name": "cn.tongdun.streamx.elastic.writer.ElasticWriter",
+        "url": "http://33.69.6.98:9221",
+        "index": "zhy_test_job1_{0}",
+        "partitionValue": "inputTime",
+        "type": "job4",
+        "batchSize": 200,
+        "hasId": false
+      },
+      "transformer": {
+        "where": "",
+        "reader_fields": {
+          "id": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "string"
+          },
+          "longitude": {
+            "type": "string"
+          },
+          "time": {
+            "type": "string"
+          },
+          "sendTime": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          }
+        },
+        "writer_fields": [
+          "*",
+          "substr(time,0,10) as inputTime"
+        ]
+      }
+    },
+    {
+      "reader": {
+        "name": "",
+        "brokerList": "33.69.6.13:9092,33.69.6.14:9092,33.69.6.15:9092,33.69.6.16:9092,33.69.6.17:9092,33.69.6.18:9092,33.69.6.19:9092,33.69.6.20:9092,33.69.6.21:9092,33.69.6.22:9092",
+        "topic": "test_zhy",
+        "groupId": "es_test5",
+        "extraConfigs": "",
+        "parser": "json"
+      },
+      "writer": {
+        "name": "cn.tongdun.streamx.elastic.writer.ElasticWriter",
+        "url": "http://33.69.6.98:9221",
+        "index": "zhy_test_job2",
+        "type": "job4",
+        "batchSize": 200,
+        "hasId": false
+      },
+      "transformer": {
+        "where": "",
+        "reader_fields": {
+          "id": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "string"
+          },
+          "longitude": {
+            "type": "string"
+          },
+          "time": {
+            "type": "string"
+          },
+          "sendTime": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          }
+        },
+        "writer_fields": [
+          "*",
+          "substr(time,0,12) as inputTime"
+        ]
+      }
+    }
+  ]
+}

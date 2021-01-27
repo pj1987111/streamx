@@ -1,0 +1,694 @@
+{
+  "params": {
+    "batchDuration": 30
+  },
+  "plugins": [],
+  "configs": [
+    {
+      "reader": {
+        "name": "cn.tongdun.streamx.kafka.reader.KafkaReader",
+        "brokerList": "10.57.34.20:9092",
+        "topic": "24test",
+        "groupId": "25",
+        "extraConfigs": "auto.offset.reset:earliest",
+        "parser": "json"
+      },
+      "writers": [
+        {
+          "name": "cn.tongdun.streamx.hive.writer.HiveWriter",
+          "tableName": "hhy_dw.test_simple_4_dt",
+          "partitionValue": "ds"
+        },
+        {
+          "name": "cn.tongdun.streamx.elastic.writer.ElasticWriter",
+          "url": "33.69.6.95:9221,33.69.6.96:9221,33.69.6.97:9221,33.69.6.98:9221",
+          "index": "test_zzz1",
+          "partitionValue": "",
+          "type": "base",
+          "batchSize": 1000,
+          "hasId": false
+        }
+      ],
+      "transformer": {
+        "where": "tbName='exit_jour'",
+        "reader_fields": {
+          "data.N_sign_Status": {
+            "type": "int"
+          },
+          "data.c_bankExamNo": {
+            "type": "varchar"
+          },
+          "data.c_cacu_way": {
+            "type": "varchar"
+          },
+          "data.c_card_license": {
+            "type": "varchar"
+          },
+          "data.c_cardno": {
+            "type": "varchar"
+          },
+          "data.c_category": {
+            "type": "varchar"
+          },
+          "data.c_en_category": {
+            "type": "varchar"
+          },
+          "data.c_en_lane_type": {
+            "type": "varchar"
+          },
+          "data.c_en_shift_code": {
+            "type": "varchar"
+          },
+          "data.c_en_vehicle_class": {
+            "type": "varchar"
+          },
+          "data.c_ex_card_status": {
+            "type": "varchar"
+          },
+          "data.c_ex_license": {
+            "type": "varchar"
+          },
+          "data.c_ex_shift_code": {
+            "type": "varchar"
+          },
+          "data.c_ex_vehicle_class": {
+            "type": "varchar"
+          },
+          "data.c_ex_vehicle_type": {
+            "type": "varchar"
+          },
+          "data.c_lane_type": {
+            "type": "varchar"
+          },
+          "data.c_make_ticket": {
+            "type": "varchar"
+          },
+          "data.c_other_type": {
+            "type": "varchar"
+          },
+          "data.c_part_vehicle_type": {
+            "type": "varchar"
+          },
+          "data.c_pay_way": {
+            "type": "varchar"
+          },
+          "data.c_posSerialNo": {
+            "type": "varchar"
+          },
+          "data.c_send_flag1": {
+            "type": "varchar"
+          },
+          "data.c_send_flag2": {
+            "type": "int"
+          },
+          "data.c_send_flag3": {
+            "type": "varchar"
+          },
+          "data.c_send_flag4": {
+            "type": "varchar"
+          },
+          "data.c_special_type": {
+            "type": "varchar"
+          },
+          "data.c_temp": {
+            "type": "varchar"
+          },
+          "data.c_temp1": {
+            "type": "varchar"
+          },
+          "data.c_temp2": {
+            "type": "varchar"
+          },
+          "data.c_ticket_type": {
+            "type": "varchar"
+          },
+          "data.c_verifycode": {
+            "type": "varchar"
+          },
+          "data.d_agency_gantry_fee": {
+            "type": "double"
+          },
+          "data.d_agency_toll": {
+            "type": "double"
+          },
+          "data.d_bef_balance": {
+            "type": "double"
+          },
+          "data.d_card_agency_toll": {
+            "type": "double"
+          },
+          "data.d_card_forfeit": {
+            "type": "double"
+          },
+          "data.d_card_toll": {
+            "type": "double"
+          },
+          "data.d_cpu_fee_total": {
+            "type": "double"
+          },
+          "data.d_enpermittedweight": {
+            "type": "double"
+          },
+          "data.d_enweight": {
+            "type": "double"
+          },
+          "data.d_fare0": {
+            "type": "double"
+          },
+          "data.d_fare1": {
+            "type": "double"
+          },
+          "data.d_fare2": {
+            "type": "double"
+          },
+          "data.d_fee_Rate": {
+            "type": "double"
+          },
+          "data.d_fee_length": {
+            "type": "double"
+          },
+          "data.d_forfeit": {
+            "type": "double"
+          },
+          "data.d_originalagencyfare": {
+            "type": "double"
+          },
+          "data.d_originalfare0": {
+            "type": "double"
+          },
+          "data.d_originalfare1": {
+            "type": "double"
+          },
+          "data.d_originalfare2": {
+            "type": "double"
+          },
+          "data.d_originalpassfare": {
+            "type": "double"
+          },
+          "data.d_originaltotalfee": {
+            "type": "double"
+          },
+          "data.d_over_weight": {
+            "type": "double"
+          },
+          "data.d_prov_fee": {
+            "type": "double"
+          },
+          "data.d_prov_pass_fee": {
+            "type": "double"
+          },
+          "data.d_prov_pay_fee": {
+            "type": "double"
+          },
+          "data.d_short_Fee_Mileage": {
+            "type": "double"
+          },
+          "data.d_short_fee_total": {
+            "type": "double"
+          },
+          "data.d_svc_balance": {
+            "type": "double"
+          },
+          "data.d_toll": {
+            "type": "double"
+          },
+          "data.d_total_fee": {
+            "type": "double"
+          },
+          "data.d_total_pay_fee": {
+            "type": "double"
+          },
+          "data.d_trans_Fee": {
+            "type": "double"
+          },
+          "data.d_unpaid": {
+            "type": "double"
+          },
+          "data.d_weight": {
+            "type": "double"
+          },
+          "data.d_zj_fee": {
+            "type": "double"
+          },
+          "data.hhy_dt": {
+            "type": "varchar"
+          },
+          "data.n_agency_gantry_num": {
+            "type": "int"
+          },
+          "data.n_algorithmidentifier": {
+            "type": "int"
+          },
+          "data.n_axis": {
+            "type": "int"
+          },
+          "data.n_batch_no": {
+            "type": "int"
+          },
+          "data.n_bill_no": {
+            "type": "int"
+          },
+          "data.n_box_id": {
+            "type": "int"
+          },
+          "data.n_card_lane_id": {
+            "type": "int"
+          },
+          "data.n_card_op_code": {
+            "type": "int"
+          },
+          "data.n_card_serial_no": {
+            "type": "int"
+          },
+          "data.n_detail_lines": {
+            "type": "int"
+          },
+          "data.n_direction": {
+            "type": "int"
+          },
+          "data.n_display_amount_type": {
+            "type": "int"
+          },
+          "data.n_electricalpercent": {
+            "type": "int"
+          },
+          "data.n_en_card_id": {
+            "type": "varchar"
+          },
+          "data.n_en_date": {
+            "type": "int"
+          },
+          "data.n_en_psam_id": {
+            "type": "int"
+          },
+          "data.n_en_station_id": {
+            "type": "int"
+          },
+          "data.n_en_sys_date": {
+            "type": "int"
+          },
+          "data.n_en_time": {
+            "type": "int"
+          },
+          "data.n_en_vehicle_usertype": {
+            "type": "int"
+          },
+          "data.n_enaxlecount": {
+            "type": "int"
+          },
+          "data.n_enspecialtruck": {
+            "type": "int"
+          },
+          "data.n_ex_cpu_psamid": {
+            "type": "int"
+          },
+          "data.n_ex_date": {
+            "type": "int"
+          },
+          "data.n_ex_lane_id": {
+            "type": "int"
+          },
+          "data.n_ex_op_code": {
+            "type": "int"
+          },
+          "data.n_ex_psam_id": {
+            "type": "int"
+          },
+          "data.n_ex_serial_no": {
+            "type": "int"
+          },
+          "data.n_ex_time": {
+            "type": "int"
+          },
+          "data.n_ex_vehicle_usertype": {
+            "type": "int"
+          },
+          "data.n_exaxlecount": {
+            "type": "int"
+          },
+          "data.n_exit_Fee_Type": {
+            "type": "int"
+          },
+          "data.n_favouredpolicy_type": {
+            "type": "int"
+          },
+          "data.n_gantry_lines": {
+            "type": "int"
+          },
+          "data.n_marks_mode": {
+            "type": "int"
+          },
+          "data.n_mb_trade_date": {
+            "type": "int"
+          },
+          "data.n_mb_trade_time": {
+            "type": "int"
+          },
+          "data.n_multiprovince": {
+            "type": "int"
+          },
+          "data.n_obu_count_local": {
+            "type": "int"
+          },
+          "data.n_obu_count_nocard": {
+            "type": "int"
+          },
+          "data.n_obu_count_provs": {
+            "type": "int"
+          },
+          "data.n_obu_count_total": {
+            "type": "int"
+          },
+          "data.n_obu_distance": {
+            "type": "int"
+          },
+          "data.n_obu_sign": {
+            "type": "int"
+          },
+          "data.n_other_id": {
+            "type": "varchar"
+          },
+          "data.n_prn_times": {
+            "type": "int"
+          },
+          "data.n_station": {
+            "type": "int"
+          },
+          "data.n_temp": {
+            "type": "int"
+          },
+          "data.n_temp1": {
+            "type": "int"
+          },
+          "data.n_temp2": {
+            "type": "int"
+          },
+          "data.n_toll_support": {
+            "type": "int"
+          },
+          "data.n_trade_mode": {
+            "type": "int"
+          },
+          "data.n_trade_speed": {
+            "type": "double"
+          },
+          "data.n_trade_time": {
+            "type": "int"
+          },
+          "data.n_trans_Pay_Type": {
+            "type": "int"
+          },
+          "data.n_vehicle_class_gb": {
+            "type": "int"
+          },
+          "data.n_vehicle_seats": {
+            "type": "int"
+          },
+          "data.n_vehicle_sign": {
+            "type": "int"
+          },
+          "data.n_zone_time": {
+            "type": "int"
+          },
+          "data.ts_timestamp": {
+            "type": "bigint"
+          },
+          "data.vc_agencys": {
+            "type": "varchar"
+          },
+          "data.vc_appoint": {
+            "type": "varchar"
+          },
+          "data.vc_axle_specialtype": {
+            "type": "varchar"
+          },
+          "data.vc_card_agencys": {
+            "type": "varchar"
+          },
+          "data.vc_cardver": {
+            "type": "varchar"
+          },
+          "data.vc_cert_no": {
+            "type": "varchar"
+          },
+          "data.vc_en_lane_hex": {
+            "type": "varchar"
+          },
+          "data.vc_enaxletype": {
+            "type": "varchar"
+          },
+          "data.vc_enhex": {
+            "type": "varchar"
+          },
+          "data.vc_ex_lane_hex": {
+            "type": "varchar"
+          },
+          "data.vc_exhex": {
+            "type": "varchar"
+          },
+          "data.vc_fix_marks": {
+            "type": "varchar"
+          },
+          "data.vc_fix_marks_status": {
+            "type": "varchar"
+          },
+          "data.vc_iden_license": {
+            "type": "varchar"
+          },
+          "data.vc_issue_code": {
+            "type": "varchar"
+          },
+          "data.vc_markhex": {
+            "type": "varchar"
+          },
+          "data.vc_marks": {
+            "type": "varchar"
+          },
+          "data.vc_marks1": {
+            "type": "varchar"
+          },
+          "data.vc_obu_ef04_rec": {
+            "type": "varchar"
+          },
+          "data.vc_obu_en_station": {
+            "type": "varchar"
+          },
+          "data.vc_obu_id": {
+            "type": "varchar"
+          },
+          "data.vc_obumac": {
+            "type": "varchar"
+          },
+          "data.vc_obusn": {
+            "type": "varchar"
+          },
+          "data.vc_pass_id": {
+            "type": "varchar"
+          },
+          "data.vc_prov_fees": {
+            "type": "varchar"
+          },
+          "data.vc_prov_ids": {
+            "type": "varchar"
+          },
+          "data.vc_prov_od": {
+            "type": "varchar"
+          },
+          "data.vc_rateversion": {
+            "type": "varchar"
+          },
+          "data.vc_short_fare_ver": {
+            "type": "varchar"
+          },
+          "data.vc_special_type_gb": {
+            "type": "varchar"
+          },
+          "data.vc_stationhex": {
+            "type": "varchar"
+          },
+          "data.vc_tac": {
+            "type": "varchar"
+          },
+          "data.vc_trade_id": {
+            "type": "varchar"
+          },
+          "data.vc_vehicle_Sign_Id": {
+            "type": "varchar"
+          },
+          "tbName": {
+            "type": "varchar"
+          },
+          "time": {
+            "type": "varchar"
+          }
+        },
+        "writer_fields": [
+          "data_n_sign_status as data_n_sign_status",
+          "data_c_bankexamno as data_c_bankexamno",
+          "data_c_cacu_way as data_c_cacu_way",
+          "data_c_card_license as data_c_card_license",
+          "data_c_cardno as data_c_cardno",
+          "data_c_category as data_c_category",
+          "data_c_en_category as data_c_en_category",
+          "data_c_en_lane_type as data_c_en_lane_type",
+          "data_c_en_shift_code as data_c_en_shift_code",
+          "data_c_en_vehicle_class as data_c_en_vehicle_class",
+          "data_c_ex_card_status as data_c_ex_card_status",
+          "data_c_ex_license as data_c_ex_license",
+          "data_c_ex_shift_code as data_c_ex_shift_code",
+          "data_c_ex_vehicle_class as data_c_ex_vehicle_class",
+          "data_c_ex_vehicle_type as data_c_ex_vehicle_type",
+          "data_c_lane_type as data_c_lane_type",
+          "data_c_make_ticket as data_c_make_ticket",
+          "data_c_other_type as data_c_other_type",
+          "data_c_part_vehicle_type as data_c_part_vehicle_type",
+          "data_c_pay_way as data_c_pay_way",
+          "data_c_posserialno as data_c_posserialno",
+          "data_c_send_flag1 as data_c_send_flag1",
+          "data_c_send_flag2 as data_c_send_flag2",
+          "data_c_send_flag3 as data_c_send_flag3",
+          "data_c_send_flag4 as data_c_send_flag4",
+          "data_c_special_type as data_c_special_type",
+          "data_c_temp as data_c_temp",
+          "data_c_temp1 as data_c_temp1",
+          "data_c_temp2 as data_c_temp2",
+          "data_c_ticket_type as data_c_ticket_type",
+          "data_c_verifycode as data_c_verifycode",
+          "data_d_agency_gantry_fee as data_d_agency_gantry_fee",
+          "data_d_agency_toll as data_d_agency_toll",
+          "data_d_bef_balance as data_d_bef_balance",
+          "data_d_card_agency_toll as data_d_card_agency_toll",
+          "data_d_card_forfeit as data_d_card_forfeit",
+          "data_d_card_toll as data_d_card_toll",
+          "data_d_cpu_fee_total as data_d_cpu_fee_total",
+          "data_d_enpermittedweight as data_d_enpermittedweight",
+          "data_d_enweight as data_d_enweight",
+          "data_d_fare0 as data_d_fare0",
+          "data_d_fare1 as data_d_fare1",
+          "data_d_fare2 as data_d_fare2",
+          "data_d_fee_rate as data_d_fee_rate",
+          "data_d_fee_length as data_d_fee_length",
+          "data_d_forfeit as data_d_forfeit",
+          "data_d_originalagencyfare as data_d_originalagencyfare",
+          "data_d_originalfare0 as data_d_originalfare0",
+          "data_d_originalfare1 as data_d_originalfare1",
+          "data_d_originalfare2 as data_d_originalfare2",
+          "data_d_originalpassfare as data_d_originalpassfare",
+          "data_d_originaltotalfee as data_d_originaltotalfee",
+          "data_d_over_weight as data_d_over_weight",
+          "data_d_prov_fee as data_d_prov_fee",
+          "data_d_prov_pass_fee as data_d_prov_pass_fee",
+          "data_d_prov_pay_fee as data_d_prov_pay_fee",
+          "data_d_short_fee_mileage as data_d_short_fee_mileage",
+          "data_d_short_fee_total as data_d_short_fee_total",
+          "data_d_svc_balance as data_d_svc_balance",
+          "data_d_toll as data_d_toll",
+          "data_d_total_fee as data_d_total_fee",
+          "data_d_total_pay_fee as data_d_total_pay_fee",
+          "data_d_trans_fee as data_d_trans_fee",
+          "data_d_unpaid as data_d_unpaid",
+          "data_d_weight as data_d_weight",
+          "data_d_zj_fee as data_d_zj_fee",
+          "data_hhy_dt as data_hhy_dt",
+          "data_n_agency_gantry_num as data_n_agency_gantry_num",
+          "data_n_algorithmidentifier as data_n_algorithmidentifier",
+          "data_n_axis as data_n_axis",
+          "data_n_batch_no as data_n_batch_no",
+          "data_n_bill_no as data_n_bill_no",
+          "data_n_box_id as data_n_box_id",
+          "data_n_card_lane_id as data_n_card_lane_id",
+          "data_n_card_op_code as data_n_card_op_code",
+          "data_n_card_serial_no as data_n_card_serial_no",
+          "data_n_detail_lines as data_n_detail_lines",
+          "data_n_direction as data_n_direction",
+          "data_n_display_amount_type as data_n_display_amount_type",
+          "data_n_electricalpercent as data_n_electricalpercent",
+          "data_n_en_card_id as data_n_en_card_id",
+          "data_n_en_date as data_n_en_date",
+          "data_n_en_psam_id as data_n_en_psam_id",
+          "data_n_en_station_id as data_n_en_station_id",
+          "data_n_en_sys_date as data_n_en_sys_date",
+          "data_n_en_time as data_n_en_time",
+          "data_n_en_vehicle_usertype as data_n_en_vehicle_usertype",
+          "data_n_enaxlecount as data_n_enaxlecount",
+          "data_n_enspecialtruck as data_n_enspecialtruck",
+          "data_n_ex_cpu_psamid as data_n_ex_cpu_psamid",
+          "data_n_ex_date as data_n_ex_date",
+          "data_n_ex_lane_id as data_n_ex_lane_id",
+          "data_n_ex_op_code as data_n_ex_op_code",
+          "data_n_ex_psam_id as data_n_ex_psam_id",
+          "data_n_ex_serial_no as data_n_ex_serial_no",
+          "data_n_ex_time as data_n_ex_time",
+          "data_n_ex_vehicle_usertype as data_n_ex_vehicle_usertype",
+          "data_n_exaxlecount as data_n_exaxlecount",
+          "data_n_exit_fee_type as data_n_exit_fee_type",
+          "data_n_favouredpolicy_type as data_n_favouredpolicy_type",
+          "data_n_gantry_lines as data_n_gantry_lines",
+          "data_n_marks_mode as data_n_marks_mode",
+          "data_n_mb_trade_date as data_n_mb_trade_date",
+          "data_n_mb_trade_time as data_n_mb_trade_time",
+          "data_n_multiprovince as data_n_multiprovince",
+          "data_n_obu_count_local as data_n_obu_count_local",
+          "data_n_obu_count_nocard as data_n_obu_count_nocard",
+          "data_n_obu_count_provs as data_n_obu_count_provs",
+          "data_n_obu_count_total as data_n_obu_count_total",
+          "data_n_obu_distance as data_n_obu_distance",
+          "data_n_obu_sign as data_n_obu_sign",
+          "data_n_other_id as data_n_other_id",
+          "data_n_prn_times as data_n_prn_times",
+          "data_n_station as data_n_station",
+          "data_n_temp as data_n_temp",
+          "data_n_temp1 as data_n_temp1",
+          "data_n_temp2 as data_n_temp2",
+          "data_n_toll_support as data_n_toll_support",
+          "data_n_trade_mode as data_n_trade_mode",
+          "data_n_trade_speed as data_n_trade_speed",
+          "data_n_trade_time as data_n_trade_time",
+          "data_n_trans_pay_type as data_n_trans_pay_type",
+          "data_n_vehicle_class_gb as data_n_vehicle_class_gb",
+          "data_n_vehicle_seats as data_n_vehicle_seats",
+          "data_n_vehicle_sign as data_n_vehicle_sign",
+          "data_n_zone_time as data_n_zone_time",
+          "data_ts_timestamp as data_ts_timestamp",
+          "data_vc_agencys as data_vc_agencys",
+          "data_vc_appoint as data_vc_appoint",
+          "data_vc_axle_specialtype as data_vc_axle_specialtype",
+          "data_vc_card_agencys as data_vc_card_agencys",
+          "data_vc_cardver as data_vc_cardver",
+          "data_vc_cert_no as data_vc_cert_no",
+          "data_vc_en_lane_hex as data_vc_en_lane_hex",
+          "data_vc_enaxletype as data_vc_enaxletype",
+          "data_vc_enhex as data_vc_enhex",
+          "data_vc_ex_lane_hex as data_vc_ex_lane_hex",
+          "data_vc_exhex as data_vc_exhex",
+          "data_vc_fix_marks as data_vc_fix_marks",
+          "data_vc_fix_marks_status as data_vc_fix_marks_status",
+          "data_vc_iden_license as data_vc_iden_license",
+          "data_vc_issue_code as data_vc_issue_code",
+          "data_vc_markhex as data_vc_markhex",
+          "data_vc_marks as data_vc_marks",
+          "data_vc_marks1 as data_vc_marks1",
+          "data_vc_obu_ef04_rec as data_vc_obu_ef04_rec",
+          "data_vc_obu_en_station as data_vc_obu_en_station",
+          "data_vc_obu_id as data_vc_obu_id",
+          "data_vc_obumac as data_vc_obumac",
+          "data_vc_obusn as data_vc_obusn",
+          "data_vc_pass_id as data_vc_pass_id",
+          "data_vc_prov_fees as data_vc_prov_fees",
+          "data_vc_prov_ids as data_vc_prov_ids",
+          "data_vc_prov_od as data_vc_prov_od",
+          "data_vc_rateversion as data_vc_rateversion",
+          "data_vc_short_fare_ver as data_vc_short_fare_ver",
+          "data_vc_special_type_gb as data_vc_special_type_gb",
+          "data_vc_stationhex as data_vc_stationhex",
+          "data_vc_tac as data_vc_tac",
+          "data_vc_trade_id as data_vc_trade_id",
+          "data_vc_vehicle_sign_id as data_vc_vehicle_sign_id",
+          "tbname as tbname",
+          "time as time",
+          "concat(substr(time,1,4),substr(time,6,2),substr(time,9,2)) as ds"
+        ]
+      }
+    }
+  ]
+}
