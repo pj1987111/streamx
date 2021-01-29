@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>streamx-all</artifactId>
-        <groupId>cn.tongdun.streamx</groupId>
-        <version>1.4.0</version>
+        <groupId>com.zhy.streamx</groupId>
+        <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -13,52 +13,52 @@
 
     <dependencies>
         <dependency>
-            <groupId>cn.tongdun.streamx</groupId>
+            <groupId>com.zhy.streamx</groupId>
             <artifactId>streamx-core</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>cn.tongdun.streamx</groupId>
+            <groupId>com.zhy.streamx</groupId>
             <artifactId>streamx-parser</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>cn.tongdun.streamx</groupId>
+            <groupId>com.zhy.streamx</groupId>
             <artifactId>streamx-kafka</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>cn.tongdun.streamx</groupId>
+            <groupId>com.zhy.streamx</groupId>
             <artifactId>streamx-hive</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>cn.tongdun.streamx</groupId>
+            <groupId>com.zhy.streamx</groupId>
             <artifactId>streamx-redis</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>cn.tongdun.streamx</groupId>
+            <groupId>com.zhy.streamx</groupId>
             <artifactId>streamx-elastic</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>cn.tongdun.streamx</groupId>
+            <groupId>com.zhy.streamx</groupId>
             <artifactId>streamx-mysql</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>cn.tongdun.streamx</groupId>
+            <groupId>com.zhy.streamx</groupId>
             <artifactId>streamx-stdout</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>cn.tongdun.streamx</groupId>
+            <groupId>com.zhy.streamx</groupId>
             <artifactId>streamx-addon-discovery-zk</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>cn.tongdun.streamx</groupId>
+            <groupId>com.zhy.streamx</groupId>
             <artifactId>streamx-addon-failover</artifactId>
             <version>${project.version}</version>
         </dependency>
