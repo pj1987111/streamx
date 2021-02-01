@@ -1,0 +1,53 @@
+{
+  "params": {
+    "batchDuration": "10"
+  },
+  "configs": [
+    {
+      "reader": {
+        "name": "com.zhy.streamx.socket.reader.SocketReader",
+        "ip": "127.0.0.1",
+        "port": "7777",
+        "parser": "json"
+      },
+      "writers": [
+        {
+          "name": "com.zhy.streamx.elastic.writer.ElasticWriter",
+          "url": "127.0.0.1:9221",
+          "index": "test_zhy_{0}_{1}",
+          "partitionValue": "month,version",
+          "type": "zhy",
+          "batchSize": 1000,
+          "hasId": true
+        }
+      ],
+      "transformer": {
+        "reader_fields": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "age": {
+            "type": "int"
+          },
+          "messgae": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "version": {
+            "type": "int"
+          }
+        },
+        "writer_fields": [
+          "concat(id,'-',name,'-',age) as rowid",
+          "*",
+          "concat(substr(date,1,4),substr(date,5,2)) as month"
+        ]
+      }
+    }
+  ]
+}

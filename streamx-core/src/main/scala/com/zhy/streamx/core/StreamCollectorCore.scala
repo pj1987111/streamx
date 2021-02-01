@@ -20,7 +20,7 @@ abstract class StreamCollectorCore extends Serializable {
 
     def runJob(spark: SparkSession, strings: Array[String]): Unit = {
         val mapper = new ObjectMapper()
-        logger.info(s"version 1.0.0_20210127")
+        logger.info(s"version 1.0.0_20210201")
         /**
           * 配置及广播初始化
           */

@@ -62,10 +62,9 @@ class KafkaReader(ssc: StreamingContext, spark: SparkSession, configConf: Config
         //添加每次批次执行完的监听器
         ssc.addStreamingListener(new BatchStreamingListener(kafkaStream))
 
-        val exchangeRunner = new ExchangeRunner(configConf,
-            ssc, spark).init()
+        val exchangeRunner = new ExchangeRunner(configConf, spark).init()
         kafkaStream.foreachRDD(rdd => {
-            exchangeRunner.exchangeData(rdd, spark, new RowStream[ConsumerRecord[String, String]] {
+            exchangeRunner.exchangeData(rdd, new RowStream[ConsumerRecord[String, String]] {
                 override def rowValue(row: ConsumerRecord[String, String]): String = {
                     row.value()
                 }

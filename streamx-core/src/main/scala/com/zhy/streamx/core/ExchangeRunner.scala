@@ -23,8 +23,7 @@ import scala.collection.mutable.ArrayBuffer
   *  \* Time: 16:38
   *  \* Description: 
   *  \*/
-class ExchangeRunner(configConf: ConfigConf,
-                     ssc: StreamingContext, spark: SparkSession) extends Serializable {
+class ExchangeRunner(configConf: ConfigConf, spark: SparkSession) extends Serializable {
     @transient private lazy val logger = LogManager.getLogger(classOf[ExchangeRunner])
 
     def init(): ExchangeRunner = {
@@ -37,7 +36,7 @@ class ExchangeRunner(configConf: ConfigConf,
       * 源端读取插件回调函数
       * 数据处理核心逻辑
       */
-    def exchangeData[T](rdd: RDD[T], spark: SparkSession, rowStream: RowStream[T], index: Int): Unit = {
+    def exchangeData[T](rdd: RDD[T], rowStream: RowStream[T], index: Int): Unit = {
         if (!rdd.isEmpty()) {
             try {
                 val exchangeDataConf = BroadcastWrapperInstance.getInstance(rdd.sparkContext).value.apply(index)

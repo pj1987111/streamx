@@ -1,6 +1,8 @@
 package com.zhy.streamx.exchange
 
-import cn.tongdun.streamx.core.StreamCollectorConfigFile
+import java.nio.file.Paths
+
+import com.zhy.streamx.core.StreamCollectorConfigFile
 import org.apache.spark.sql.{SQLContext, SparkSession}
 import org.apache.spark.{SparkConf, SparkContext}
 import org.junit.{Before, Test}
@@ -24,13 +26,15 @@ class ElasticTest {
 
     @Test
     def test1(): Unit = {
-        val strings = Array("local:/Volumes/workspace/zhy/pass_workspace/streamx/streamx-test/src/test/resources/data/elastic/elastic_nodata.json")
+        val path = Paths.get("src", "test/resources/configs/nc1.json").toAbsolutePath.toString
+        val strings = Array("local:"+path)
         new StreamCollectorConfigFile().runJob(sparkSession, strings)
     }
 
     @Test
     def test2(): Unit = {
-        val strings = Array("local:/Volumes/workspace/zhy/pass_workspace/streamx/streamx-test/src/test/resources/data/elastic/datacollect_exit_entry_es.json")
+        val path = Paths.get("src", "test/resources/configs/es1.json").toAbsolutePath.toString
+        val strings = Array("local:"+path)
         new StreamCollectorConfigFile().runJob(sparkSession, strings)
     }
 }

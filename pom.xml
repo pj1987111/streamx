@@ -66,6 +66,10 @@
         <module>streamx-kafka</module>
         <module>streamx-mysql</module>
         <module>streamx-stdout</module>
+        <module>streamx-socket</module>
+        <module>streamx-aerospike</module>
+        <module>streamx-dsl</module>
+        <module>streamx-binlog</module>
     </modules>
 
     <repositories>

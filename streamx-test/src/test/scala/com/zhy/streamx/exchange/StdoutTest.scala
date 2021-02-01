@@ -2,7 +2,7 @@ package com.zhy.streamx.exchange
 
 import java.nio.file.Paths
 
-import cn.tongdun.streamx.core.StreamCollectorConfigFile
+import com.zhy.streamx.core.StreamCollectorConfigFile
 import org.apache.spark.sql.{SQLContext, SparkSession}
 import org.apache.spark.{SparkConf, SparkContext}
 import org.junit.{Before, Test}

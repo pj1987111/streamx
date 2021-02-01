@@ -1,6 +1,6 @@
 package com.zhy.streamx.exchange
 
-import cn.tongdun.streamx.core.StreamCollectorConfigFile
+import com.zhy.streamx.core.StreamCollectorConfigFile
 import org.apache.spark.sql.SparkSession
 import org.junit.{Before, Test}
 

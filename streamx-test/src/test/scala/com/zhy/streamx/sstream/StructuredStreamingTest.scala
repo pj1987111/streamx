@@ -1,6 +1,6 @@
 package com.zhy.streamx.sstream
 
-import org.apache.spark.sql.streaming.{OutputMode, ProcessingTime, StreamingQuery}
+import org.apache.spark.sql.streaming.{OutputMode, ProcessingTime, StreamingQuery, Trigger}
 import org.apache.spark.sql.{DataFrame, Dataset, SparkSession}
 import org.junit.Test
 
@@ -69,17 +69,21 @@ class StructuredStreamingTest {
         import spark.implicits._
         // 第二步: 创建流。配置从 socket 读取流数据，地址和端口为 localhost: 9999
         val lines: DataFrame = spark.readStream.format("socket")
-                .option("host", "localhost")
+                .option("host", "127.0.0.1")
                 .option("port", "9999")
                 .load()
 
+        val lineDf: Dataset[(String, String)] = lines.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")
+                .as[(String, String)]
+
         // 第三步: 进行单词统计。这里 lines 是 DataFrame ，使用 as[String］给它定义类型转换为 Dataset, 之后在 Dataset 里进行单词统计。
-        val words: Dataset[String] = lines.as[String].flatMap(_.split(" "))
+        var words: Dataset[String] = lineDf.as[String].flatMap(_.split(" "))
         val wordcount: DataFrame = words.groupBy("value").count()
 
         // 第四步: 创建查询句柄，定义打印结果方式并启动程序 这里使用 writeStream 方法, 输出模式为全部输出到控制台。
-        val query: StreamingQuery = wordcount.writeStream
+        val query: StreamingQuery = words.writeStream
                 .outputMode(OutputMode.Complete)
+                .trigger(Trigger.ProcessingTime("3 seconds"))
                 .format("console")
                 .start()
         // 调用 awaitTermination 方法来防止程序在处理数据时停止

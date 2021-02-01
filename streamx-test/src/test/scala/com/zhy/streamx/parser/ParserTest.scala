@@ -1,12 +1,12 @@
 package com.zhy.streamx.parser
 
-import cn.tongdun.streamx.core.config.ConfigParser.reload
-import cn.tongdun.streamx.core.parser.{CanalParser, CsvParser, JsonParser}
-import cn.tongdun.streamx.core.util.StreamUtils
+import com.zhy.streamx.core.parser.{CanalParser, CsvParser, JsonParser}
+import com.zhy.streamx.core.util.StreamUtils
 import org.apache.spark.sql.Row
 import org.codehaus.jackson.map.{DeserializationConfig, ObjectMapper}
 import org.codehaus.jackson.node.TextNode
 import org.junit.Test
+import com.zhy.streamx.core.config.ConfigParser.reload
 
 import scala.collection.mutable.ArrayBuffer
 
