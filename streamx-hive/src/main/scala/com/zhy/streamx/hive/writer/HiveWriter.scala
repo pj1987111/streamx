@@ -27,7 +27,7 @@ class HiveWriter(spark: SparkSession, configConf: ConfigConf) extends AbstractWr
       * hive额外set值
       * 例:
       * 是否跑完merge : set spark.merge.table.enabled = true
-      * 如果遇到offset对不上，是否跳过 : spark.streaming.kafka.allowNonConsecutiveOffsets = true
+      * 如果遇到offset对不上，是否跳过 : set spark.streaming.kafka.allowNonConsecutiveOffsets = true
       */
     var hiveSetConfigs = ""
 

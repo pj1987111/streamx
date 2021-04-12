@@ -61,6 +61,24 @@
 
 ## 2 配置详解
 
+看一下writer中的配置
+
+name 这里写com.zhy.streamx.elastic.writer.ElasticWriter，表示es的数据源
+
+url 这里写es集群的地址，注意是client地址，不是transport client，多个之间用逗号分隔
+
+index 写入索引，这里有个功能，动态分区写入。
+
+es中shard不能扩缩容，所以只能靠新增索引来达到水平扩展的能力。在这里使用test_zhy_{0}_{1}表示索引名，其中{0}和{1}表示占位符。
+
+partitionValue 这个表示分区字段，与index中动态分区配合使用，字段是需要提前在transformer.reader_fields中配置，多个分区字段之间用逗号分隔。配置好在使用过程中，每个分隔字段对应index中一个占位符，根据先后排列。
+
+type 表示写入es索引对应的type名
+
+batchSize 表示批量写入的条数，当达到这个条数就会触法一次commit，需要在性能和可靠性上作出权衡，不能设置过大/过小。
+
+hasId 表示是否有指定id，true表示有指定id，当true时，将默认使用writer_fields中第一列来作为id。如果为false，将不使用字段作为id，将会使用es的默认id。
+
 ## 3 模拟数据
 
 1. kafka数据准备
